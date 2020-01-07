@@ -34,7 +34,7 @@ gulp.task('js', function () {
   });
 
   // transform streaming contents into buffer contents (because gulp-sourcemaps does not support streaming contents)
-  b.bundle()
+  return b.bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
@@ -45,24 +45,23 @@ gulp.task('js', function () {
 });
 
 gulp.task('sass', function() {
-  gulp.src('app/client/stylesheets/site.scss')
+  return gulp.src('app/client/stylesheets/site.scss')
     .pipe(sass())
       .on('error', sass.logError)
     .pipe(cleanCss())
     .pipe(gulp.dest('app/client/build'));
 });
 
-gulp.task('build', ['js', 'sass'], function() {
-  // Yup, build the js and sass.
-});
+gulp.task('build', gulp.parallel('js', 'sass'));
 
-gulp.task('watch', ['js', 'sass'], function() {
-  gulp.watch('app/client/src/**/*.js', ['js']);
-  gulp.watch('app/client/views/**/*.js', ['js']);
-  gulp.watch('app/client/stylesheets/**/*.scss', ['sass']);
-});
+gulp.task('watch', gulp.series(gulp.parallel('js', 'sass'), done => {
+  gulp.watch('app/client/src/**/*.js', gulp.series('js'));
+  gulp.watch('app/client/views/**/*.js', gulp.series('js'));
+  gulp.watch('app/client/stylesheets/**/*.scss', gulp.series('sass'));
+  done();
+}));
 
-gulp.task('server', ['watch'], function() {
+gulp.task('server', gulp.series('watch', done => {
   nodemon({
     script: 'app.js',
     env: { 'NODE_ENV': process.env.NODE_ENV || 'DEV' },
@@ -70,4 +69,5 @@ gulp.task('server', ['watch'], function() {
       'app/server'
     ]
   });
-});
+  done();
+}));
