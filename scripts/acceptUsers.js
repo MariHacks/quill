@@ -4,7 +4,7 @@ var database        = process.env.DATABASE || "mongodb://localhost:27017";
 var jwt             = require('jsonwebtoken');
 mongoose.connect(database);
 
-var UserController = require('../app/server/controllers/UserController');
+var UserController = require('../server/controllers/UserController');
 
 var user = { email: process.env.ADMIN_EMAIL };
 

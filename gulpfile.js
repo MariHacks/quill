@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -28,7 +28,7 @@ gulp.task('default', function(){
 
 gulp.task('js', function () {
   var b = browserify({
-    entries: 'app/client/src/app.js',
+    entries: 'src/app.js',
     debug: environment === "dev",
     transform: [browserifyNgAnnotate]
   });
@@ -41,23 +41,23 @@ gulp.task('js', function () {
     .pipe(ngAnnotate())
     .on('error', swallowError)
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('app/client/build'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('sass', function() {
-  return gulp.src('app/client/stylesheets/site.scss')
+  return gulp.src('stylesheets/site.scss')
     .pipe(sass())
       .on('error', sass.logError)
     .pipe(cleanCss())
-    .pipe(gulp.dest('app/client/build'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('build', gulp.parallel('js', 'sass'));
 
 gulp.task('watch', gulp.series(gulp.parallel('js', 'sass'), done => {
-  gulp.watch('app/client/src/**/*.js', gulp.series('js'));
-  gulp.watch('app/client/views/**/*.js', gulp.series('js'));
-  gulp.watch('app/client/stylesheets/**/*.scss', gulp.series('sass'));
+  gulp.watch('src/**/*.js', gulp.series('js'));
+  gulp.watch('views/**/*.js', gulp.series('js'));
+  gulp.watch('stylesheets/**/*.scss', gulp.series('sass'));
   done();
 }));
 
@@ -66,7 +66,7 @@ gulp.task('server', gulp.series('watch', done => {
     script: 'app.js',
     env: { 'NODE_ENV': process.env.NODE_ENV || 'DEV' },
     watch: [
-      'app/server'
+      'server'
     ]
   });
   done();

@@ -3,7 +3,7 @@ var mongoose        = require('mongoose');
 var database        = process.env.DATABASE || { url: "mongodb://localhost:27017"};
 mongoose.connect(database.url);
 
-var UserController = require('../app/server/controllers/UserController');
+var UserController = require('../server/controllers/UserController');
 
 var users = 1000;
 var username = 'hacker';

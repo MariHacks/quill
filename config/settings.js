@@ -1,4 +1,4 @@
-var Settings = require('../app/server/models/Settings');
+var Settings = require('../server/models/Settings');
 
 Settings
   .findOne({})

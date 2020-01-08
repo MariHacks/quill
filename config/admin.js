@@ -2,7 +2,7 @@ ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 ADMIN_PASSWORD = process.env.ADMIN_PASS;
 
 // Create a default admin user.
-var User = require('../app/server/models/User');
+var User = require('../server/models/User');
 
 // If there is already a user
 User

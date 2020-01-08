@@ -4,7 +4,7 @@ var database        = process.env.DATABASE || { url: "mongodb://localhost:27017"
 var jwt             = require('jsonwebtoken');
 mongoose.connect(database.url);
 
-var User = require('../app/server/models/User');
+var User = require('../server/models/User');
 
 var email = 'hacker@school.edu';
 
