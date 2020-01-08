@@ -29,19 +29,19 @@ app.use(bodyParser.json());
 
 app.use(methodOverride());
 
-app.use(express.static(__dirname + '/app/client'));
+app.use(express.static(__dirname));
 
 // Routers =====================================================================
 
 var apiRouter = express.Router();
-require('./app/server/routes/api')(apiRouter);
+require('./server/routes/api')(apiRouter);
 app.use('/api', apiRouter);
 
 var authRouter = express.Router();
-require('./app/server/routes/auth')(authRouter);
+require('./server/routes/auth')(authRouter);
 app.use('/auth', authRouter);
 
-require('./app/server/routes')(app);
+require('./routes')(app);
 
 // listen (start app with node server.js) ======================================
 app.listen(port);
