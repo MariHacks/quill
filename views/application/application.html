@@ -71,6 +71,7 @@
         <div class="field">
           <label>I would describe myself as a...</label>
           <input type="text"
+                 name="empty"
                  placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
                  ng-model="user.profile.description">
         </div>
@@ -79,20 +80,20 @@
           <label>
               What would you like to learn or get out of HackMIT? (optional)
           </label>
-          <textarea ng-model="user.profile.essay">
+          <textarea name="empty" ng-model="user.profile.essay">
           </textarea>
         </div>
 
         <br>
 
+        <div class="ui error message"></div>
         <div class="field" ng-hide="regIsClosed">
           <button type="submit"
-                  class="fluid ui purple button"
+                  class="fluid purple ui submit button"
                   ng-click="submitForm()">
             Submit
           </button>
         </div>
-
         </fieldset>
       </div>
     </div>

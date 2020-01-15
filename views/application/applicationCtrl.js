@@ -123,6 +123,15 @@ angular.module('reg')
                 }
               ]
             },
+            empty: {
+              identifier: 'empty',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter a value'
+                }
+              ]
+            }
           }
         });
       }
@@ -131,7 +140,7 @@ angular.module('reg')
         if ($('.ui.form').form('is valid')){
           _updateUser();
         } else {
-          swal("Uh oh!", "Please Fill The Required Fields", "error");
+          $('.ui.form').form('validate form');
         }
       };
     }]);
