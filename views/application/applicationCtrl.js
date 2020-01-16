@@ -126,15 +126,24 @@ angular.module('reg')
                 }
               ]
             },
-            empty: {
-              identifier: 'empty',
+            description: {
+              identifier: 'description',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please enter a value'
+                  prompt: 'Please input a value.'
                 }
               ]
-            }
+            },
+            essay: {
+              identifier: 'essay',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please input a value.'
+                }
+              ]
+            },
           }
         });
       }
