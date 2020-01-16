@@ -8,6 +8,8 @@ var Email = require('email-templates');
 var ROOT_URL = process.env.ROOT_URL;
 
 var HACKATHON_NAME = process.env.HACKATHON_NAME;
+var HACK_NAME = process.env.HACK_NAME;
+var HACK_YEAR = process.env.HACK_YEAR;
 var EMAIL_ADDRESS = process.env.EMAIL_ADDRESS;
 var TWITTER_HANDLE = process.env.TWITTER_HANDLE;
 var FACEBOOK_HANDLE = process.env.FACEBOOK_HANDLE;
@@ -57,6 +59,8 @@ function sendOne(templateName, options, data, callback) {
   data.emailHeaderImage = EMAIL_HEADER_IMAGE;
   data.emailAddress = EMAIL_ADDRESS;
   data.hackathonName = HACKATHON_NAME;
+  data.hackName = HACK_NAME;
+  data.hackYear = HACK_YEAR;
   data.twitterHandle = TWITTER_HANDLE;
   data.facebookHandle = FACEBOOK_HANDLE;
 
@@ -93,7 +97,8 @@ controller.sendVerificationEmail = function(email, token, callback) {
   };
 
   var locals = {
-    verifyUrl: ROOT_URL + '/verify/' + token
+    verifyUrl: ROOT_URL + '/verify/' + token,
+    team: HACK_NAME,
   };
 
   /**
@@ -135,7 +140,8 @@ controller.sendPasswordResetEmail = function(email, token, callback) {
     description: 'Somebody (hopefully you!) has requested that your password be reset. If ' +
       'this was not you, feel free to disregard this email. This link will expire in one hour.',
     actionUrl: ROOT_URL + '/reset/' + token,
-    actionName: "Reset Password"
+    actionName: "Reset Password",
+    team: HACK_NAME,
   };
 
   /**
@@ -173,6 +179,7 @@ controller.sendPasswordChangedEmail = function(email, callback){
   var locals = {
     title: 'Password Updated',
     body: 'Somebody (hopefully you!) has successfully changed your password.',
+    team: HACK_NAME,
   };
 
   /**

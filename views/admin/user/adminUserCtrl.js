@@ -6,7 +6,9 @@ angular.module('reg')
     '$http',
     'user',
     'UserService',
-    function($scope, $http, User, UserService){
+    'EVENT_INFO',
+    function($scope, $http, User, UserService, EVENT_INFO){
+      $scope.EVENT_INFO = EVENT_INFO;
       $scope.selectedUser = User.data;
 
       // Populate the school dropdown
