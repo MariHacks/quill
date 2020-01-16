@@ -364,28 +364,4 @@ module.exports = function(router) {
     var close = req.body.timeClose;
     SettingsController.updateRegistrationTimes(open, close, defaultResponse(req, res));
   });
-
-  /**
-   * Get the whitelisted emails.
-   *
-   * res: {
-   *   emails: [String]
-   * }
-   */
-  router.get('/settings/whitelist', isAdmin, function(req, res){
-    SettingsController.getWhitelistedEmails(defaultResponse(req, res));
-  });
-
-  /**
-   * [ADMIN ONLY]
-   * {
-   *   emails: [String]
-   * }
-   * res: Settings
-   *
-   */
-  router.put('/settings/whitelist', isAdmin, function(req, res){
-    var emails = req.body.emails;
-    SettingsController.updateWhitelistedEmails(emails, defaultResponse(req, res));
-  });
 };

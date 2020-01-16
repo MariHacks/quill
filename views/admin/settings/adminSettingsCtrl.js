@@ -26,23 +26,6 @@ angular.module('reg')
         $scope.settings = settings;
       }
 
-      // Whitelist --------------------------------------
-
-      SettingsService
-        .getWhitelistedEmails()
-        .then(response => {
-          $scope.whitelist = response.data.join(", ");
-        });
-
-      $scope.updateWhitelist = function(){
-        SettingsService
-          .updateWhitelistedEmails($scope.whitelist.replace(/ /g, '').split(','))
-          .then(response => {
-            swal('Whitelist updated.');
-            $scope.whitelist = response.data.whitelistedEmails.join(", ");
-          });
-      };
-
       // Registration Times -----------------------------
 
       $scope.formatDate = function(date){
