@@ -11,23 +11,12 @@
         <div class="divided title">Basic Details</div>
 
         <fieldset ng-disabled="pastConfirmation">
-
-          <div class="field">
-            <label> Phone number (required) </label>
-            <input type="tel"
-                   name="phone"
-                   ng-model="user.confirmation.phoneNumber"
-                   placeholder="(123) - 555 - 1234"
-                   required>
-          </div>
-
           <div class="field">
             <label> Dietary Restrictions </label>
             <p>
               If your restriction is not included here, please let us know in the additional notes at the bottom.
             </p>
           </div>
-
           <div class="inline fields">
             <div class="field"
               ng-repeat="(key, value) in dietaryRestrictions">
@@ -36,7 +25,6 @@
                 <input type="checkbox" ng-model="dietaryRestrictions[key]" />
                 <label>{{key}}</label>
               </div>
-
             </div>
           </div>
 
@@ -57,85 +45,6 @@
           </div>
 
           <div class="divided title"> Skills & Accomplishments </div>
-
-          <div class="field">
-            <label> What are you studying? </label>
-            <input type="text"
-                   name="study"
-                   placeholder="Computer Science, Product Design, Basket Weaving, etc."
-                   ng-model="user.confirmation.major">
-          </div>
-
-          <div class="field">
-            <label> Github </label>
-            <input type="text"
-                   name="github"
-                   placeholder="https://github.com/foobar"
-                   ng-model="user.confirmation.github">
-          </div>
-
-          <br>
-          <br>
-
-          <div class="divided title">Legal</div>
-
-          <div class="field">
-            <label> Liability Waiver </label>
-            <p>
-              <a
-                target="_blank"
-                href="https://go.hackmit.org/liability-waiver">
-                Liability Waiver
-              </a>
-            </p>
-            <p>By writing my name below, I affirm that I have read and accepted the terms of the liability waiver above.</p>
-            <input type="text"
-                   name="signatureLiabilityWaiver"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signatureLiability">
-          </div>
-
-          <div class="field">
-            <label> Photo Release </label>
-            <p>
-              <a
-                target="_blank"
-                href="assets/HackMIT%202019%20Photo%20Release%20Form.pdf">
-                Photo Release
-              </a>
-            </p>
-            <p>
-              Signing this photo release means if we take photos or photos of you, we can share it with the world.
-            </p>
-            <p>
-              By writing my name below, I affirm that I have read and accepted the terms of the photo release above.
-            </p>
-            <input type="text"
-                   name="signaturePhotoRelease"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signaturePhotoRelease">
-          </div>
-
-          <div class="field">
-            <label> Code of Conduct </label>
-            <p>
-              <a
-                target="_blank"
-                href="https://go.hackmit.org/code-of-conduct">
-                Hacker Code of Conduct
-              </a>
-            </p>
-            <p>
-              It is extremely important to us that attendees follow a set of guidelines to make the event fun for everyone involved. Please read through and make sure you understand what we will be expecting of you.
-            </p>
-            <p>
-              By writing my name below, I affirm that I have read and will abide by the code of conduct detailed above.
-            </p>
-            <input type="text"
-                   name="signatureCodeOfConduct"
-                   placeholder="Your Full Legal Name"
-                   ng-model="user.confirmation.signatureCodeOfConduct">
-          </div>
 
           <br>
           <br>

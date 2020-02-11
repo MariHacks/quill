@@ -49,7 +49,6 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
-  phoneNumber: String,
   dietaryRestrictions: [String],
   shirtSize: {
     type: String,
@@ -58,16 +57,7 @@ var confirmation = {
     }
   },
 
-  major: String,
-  github: String,
-  website: String,
-  resume: String,
-
   notes: String,
-
-  signatureLiability: String,
-  signaturePhotoRelease: String,
-  signatureCodeOfConduct: String,
 };
 
 var status = {

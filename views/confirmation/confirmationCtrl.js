@@ -63,7 +63,8 @@ angular.module('reg')
               $state.go("app.dashboard");
             });
           }, response => {
-            swal("Uh oh!", "Something went wrong.", "error");
+            swal("Uh oh!", "Something went wrong. Please contact us " +
+              "if the error persists.", "error");
           });
       }
 
@@ -77,42 +78,6 @@ angular.module('reg')
                 {
                   type: 'empty',
                   prompt: 'Please give us a shirt size!'
-                }
-              ]
-            },
-            phone: {
-              identifier: 'phone',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter a phone number.'
-                }
-              ]
-            },
-            signatureLiability: {
-              identifier: 'signatureLiabilityWaiver',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
-                }
-              ]
-            },
-            signaturePhotoRelease: {
-              identifier: 'signaturePhotoRelease',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
-                }
-              ]
-            },
-            signatureCodeOfConduct: {
-              identifier: 'signatureCodeOfConduct',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
                 }
               ]
             },

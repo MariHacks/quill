@@ -295,24 +295,12 @@ angular.module('reg')
             name: 'Confirmation',
             fields: [
               {
-                name: 'Phone Number',
-                value: user.confirmation.phoneNumber
-              },{
                 name: 'Dietary Restrictions',
                 value: user.confirmation.dietaryRestrictions.join(', ')
               },{
                 name: 'Shirt Size',
                 value: user.confirmation.shirtSize
-              },{
-                name: 'Major',
-                value: user.confirmation.major
-              },{
-                name: 'Github',
-                value: user.confirmation.github
-              },{
-                name: 'Website',
-                value: user.confirmation.website
-              },
+              }
             ]
           }
         ];
