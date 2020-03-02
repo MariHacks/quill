@@ -49,7 +49,14 @@ function calculateStats(){
 
     dietaryRestrictions: {},
 
-    checkedIn: 0
+    schools: {},
+    schoolsCheckedIn: {},
+
+    checkedIn: 0,
+    checkedInM: 0,
+    checkedInF: 0,
+    checkedInO: 0,
+    checkedInN: 0,
   };
 
   User
@@ -114,8 +121,25 @@ function calculateStats(){
           });
         }
 
+        newStats.schools[user.profile.school] =
+          !!newStats.schools[user.profile.school] + 1;
+
         // Count checked in
-        newStats.checkedIn += user.status.checkedIn ? 1 : 0;
+        if (user.status.checkedIn) {
+          newStats.checkedIn += 1;
+
+          switch (user.profile.gender) {
+            case "M": newStats.checkedInM += 1; break;
+            case "F": newStats.checkedInF += 1; break;
+            case "N": newStats.checkedInN += 1; break;
+            case "O": newStats.checkedInO += 1; break;
+          }
+
+          if (!(user.profile.school in newStats.schoolsCheckedIn))
+            newStats.schoolsCheckedIn[user.profile.school] = 0;
+
+          newStats.schoolsCheckedIn[user.profile.school] += 1;
+        }
 
         callback(); // let async know we've finished
       }, function() {
